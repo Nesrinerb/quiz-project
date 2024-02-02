@@ -1,0 +1,66 @@
+<div class="container d-flex justify-content-center mt-5 mb-5 ">
+    <div class="row col-6">
+      <h3 class="text-center">Fell the form bellow to subscire</h3>
+     
+      <form [formGroup]="userForm" (ngSubmit)="registerUserForm()" class="row g-3">
+        <div class="col-md-12">
+            <label  class="form-label">Name :</label>
+            <input type="text" [class.is-invalid]="name?.invalid && name?.touched"  formControlName="name" class="form-control" >
+            <small [class.d-none]="name?.valid || name?.untouched  " class="text-danger">You must enter you full name!</small>
+          </div>
+  
+        <div class="col-12">
+          <label  class="form-label">Address :</label>
+          <input type="text" [class.is-invalid]="address?.invalid && address?.touched" formControlName="address" class="form-control" >
+          <small [class.d-none]="address?.valid || address?.untouched  " class="text-danger">You must enter your address!</small>
+        </div>
+  
+        <div class="col-12">
+          <label  class="form-label">Phone number :</label>
+          <input type="tel" [class.is-invalid]="phone?.invalid && phone?.touched" formControlName="phone" class="form-control" >
+          <small [class.d-none]="phone?.valid || phone?.untouched  " class="text-danger">Your phone number is a necessity!</small>
+        </div>
+  
+        <div class="col-md-4">
+          <label  class="form-label">You are :</label>
+          <select  [class.is-invalid]="genre?.invalid && genre?.touched" formControlName="genre" class="form-select">
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+          <small [class.d-none]="genre?.valid ||genre?.untouched  " class="text-danger"> You must choose an option!</small>
+        </div>
+  
+        <div class="col-md-4">
+          <label  class="form-label">Birth Date :</label>
+          <input type="date" [class.is-invalid]="date?.invalid && date?.touched"  formControlName="date" class="form-control">
+          <small [class.d-none]="date?.valid || date?.untouched  " class="text-danger">You must enter your birth date !</small>
+        </div>
+        
+        <div class="col-md-12">
+          <label  class="form-label">Email :</label>
+          <input type="email" [class.is-invalid]="email?.invalid && email?.touched" formControlName="email" class="form-control" >
+          <div *ngIf="email?.errors && (email?.invalid && email?.touched)">
+            <small class="text-danger" *ngIf="email?.errors?.['required']">You must enter your email!</small> 
+            <small class="text-danger" *ngIf="email?.errors?.['pattern']">You need tou write the email in the right format!</small> 
+          </div>
+        </div>
+  
+  
+        <div class="col-md-12">
+          <label class="form-label">Password :</label>
+          <input type="password" [class.is-invalid]="password?.invalid && password?.touched" formControlName="password" class="form-control" >
+          <small [class.d-none]="password?.valid ||password?.untouched" class="text-danger">You must enter your password!</small>
+        </div>
+        <div class="col-md-12">
+            <label  class="form-label">Confirm youur password :</label>
+            <input type="password" [class.is-invalid]="userForm.errors?.['misMatch']" formControlName="confpassword" class="form-control" >
+            <small class="text-danger" *ngIf="userForm.errors?.['misMatch']">Passwords don't match, please check again!</small>
+          </div>
+        
+       
+        <div class="col-12 d-flex justify-content-center">
+          <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>

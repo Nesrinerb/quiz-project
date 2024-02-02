@@ -1,0 +1,41 @@
+<div class="container ">
+    <div class="form" [formGroup]="quiz">
+        <h1 class="text-center m-5">Change the Quiz</h1>
+        <div class="col-6 m-2 fs-4 text-primary">
+            <label for="question" class="form-label fw-bold">Quiz Title :</label>
+            <input type="text" formControlName="title" class="form-control"> 
+        </div>
+        <div formArrayName="questionList" *ngFor="let question of questionList.controls; let i = index" style="background-color: rgb(220, 218, 218);">
+            <div [formGroupName]="i">
+                <div class="col-10 m-3">
+                    <div>
+                        <label for="question" class="form-label fw-bold">Question :</label>
+                        <input type="text" formControlName="question" class="form-control">
+                    </div>
+                </div>
+                
+                    <div  formArrayName="questionAnswers">
+                        <div  *ngFor="let answer of questionAnswers(i).controls; let j = index">
+                            <div class="col-7 m-3" [formGroupName]="j">
+                                <div class="mb-2">
+                                    <label  class="form-label fw-bold">Answer :</label>
+                                    <input type="text" formControlName="answer" class="form-control">
+                                </div> 
+                                <div>
+                                    <input class="form-check-input" type="checkbox" formControlName="correct">
+                                    <label class="form-check-label">Correct Answer</label>
+                                </div>
+                                <button type="button" class="btn btn-dark m-3" (click)="removeAnswer(i,j)">Remove Answer</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                <button type="button" class="btn btn-success m-3" (click)="addAnswer(i)">Add Answer</button>
+
+                <button type="button" class="btn btn-danger m-3" (click)="removeQuestion(i)">Remove Question</button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary m-3" (click)="addQuestion()">Add Question</button>
+        <button type="button" class="btn btn-primary m-2" (click)="sendQuizData()">Change</button>
+    </div>
+</div>

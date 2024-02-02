@@ -1,0 +1,20 @@
+<div class="container min-vh-100 d-flex justify-content-center align-items-center " >
+    <div class="row col-4 p-3" style="background-color: rgb(220, 218, 218); border-radius: 5%;">
+        <h3 class="text-center">Log in</h3>
+        
+        <form [formGroup]="loginForm" (ngSubmit)="login()"  >
+            <div class="mb-3">
+                <label  class="form-label">Email :</label>
+                <input type="email" [class.is-invalid]="email?.invalid && email?.touched" formControlName="email" class="form-control">
+                <small [class.d-none]="email?.valid || email?.untouched  " class="text-danger"> You must enter your email!</small>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password :</label>
+                <input type="password" [class.is-invalid]="password?.invalid && password?.touched" formControlName="password" class="form-control">
+                <small [class.d-none]="password?.valid ||password?.untouched" class="text-danger">You must enter your password!</small>
+            </div>
+
+            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Connect</button>
+        </form>
+    </div>
+</div>

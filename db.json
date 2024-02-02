@@ -1,0 +1,49 @@
+{
+  "quiz": [
+    {
+      "title": "quiz1",
+      "questionList": [
+        {
+          "question": "bb",
+          "questionAnswers": [
+            {
+              "answer": "b1",
+              "correct": false
+            },
+            {
+              "answer": "b2",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "question": "c",
+          "questionAnswers": [
+            {
+              "answer": "c1",
+              "correct": false
+            },
+            {
+              "answer": "c2",
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "user": [
+    {
+      "name": "admin",
+      "address": "lac1",
+      "phone": "123456",
+      "genre": "Female",
+      "date": "1995-01-01",
+      "email": "test@test.com",
+      "password": "123",
+      "confpassword": "123",
+      "id": 1
+    }
+  ]
+}
